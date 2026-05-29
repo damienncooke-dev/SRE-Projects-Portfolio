@@ -10,14 +10,17 @@ import os
 import requests
 from pathlib import Path
 
+# Set directory path objects
 main_dir = Path(__file__).parent.parent
 description_dir = main_dir / "supplier-data" / "descriptions"
 images_dir = main_dir / "supplier-data" / "images"
 
+# Get the list of files in the directory to iterate over
 desc_text = [file.name for file in description_dir.iterdir()]
 
 desc_text_list = [] # Create an empty list to append description read from each text file
 
+# Iterate over the list of files to create a list of description information in JSON format
 for file in desc_text:
     fname, ext = os.path.splitext(file) # Get filename, extension
     image_file = f"{fname}.jpeg"  # Get the associated image file of the text file description
