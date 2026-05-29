@@ -5,4 +5,6 @@
 /Update-Vendor-Site-Products-Info/.dotenv
 /Update-Vendor-Site-Products-Info/scripts/supplier-data.tar.gz
 /Update-Vendor-Site-Products-Info/scripts/__pycache__
+.idea
+
 
