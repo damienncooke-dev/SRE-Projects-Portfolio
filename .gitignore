@@ -1,1 +1,8 @@
 /Update-Vendor-Site-Products-Info/scripts/example_upload.py
+/Update-Vendor-Site-Products-Info/outfiles/processed.pdf
+/Update-Vendor-Site-Products-Info/.venv/
+/Update-Vendor-Site-Products-Info/supplier-data/
+/Update-Vendor-Site-Products-Info/.dotenv
+/Update-Vendor-Site-Products-Info/scripts/supplier-data.tar.gz
+/Update-Vendor-Site-Products-Info/scripts/__pycache__
+
