@@ -9,7 +9,6 @@ import shutil
 import psutil
 import socket
 import emails
-import os
 
 
 body = "Please check your system and resolve the issue as soon as possible."
