@@ -37,7 +37,7 @@ def send_email(message):
     main_dir = Path(__file__).parent.parent
     env_path = main_dir / ".dotenv"
     load_dotenv(dotenv_path=env_path)
-    print(message)
+    print("Sending: ", message)
     # SMTP server setup
     email_server = os.getenv("EMAIL_SERVER")
     email_port = os.getenv("EMAIL_PORT")
@@ -48,5 +48,19 @@ def send_email(message):
        server.login(email_sender, email_password)
        server.send_message(message)
        server.quit()
+
+def generate_error_email(subject, body):
+    main_dir = Path(__file__).parent.parent
+    env_path = main_dir / ".dotenv"
+    load_dotenv(dotenv_path=env_path)
+
+    # Basic email setup
+    msg = email.message.EmailMessage()
+    msg['Subject'] = subject
+    msg['From'] = os.getenv("EMAIL_SENDER")
+    msg['To'] = os.getenv("EMAIL_RECIPIENT")
+    msg.set_content(body)
+    return msg
+
 
 
