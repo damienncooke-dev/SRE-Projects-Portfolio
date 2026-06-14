@@ -1,7 +1,7 @@
 # Automate Vendor Site Update Workflow
 
 ## Executive Summary
-An online fruit reseller is manually updating their website with supplier information regarding fruit products, such as uploading images of the product, providing their weight and associated text description. They want to automate this as well as automatically generate an email notifying the supplier of the updated information. Due to a recent spate of system issues they also want, as a nice-to-have, a way to monitor their system and get real-time notification when certain system limits are hit.  
+An online fruit reseller is manually updating their website with supplier information regarding fruit products by manually uploading images of the product, providing their weight and associated text description. They want to automate this as well as automatically generate an email notifying the supplier of the updated information. Due to a recent spate of system issues they also want, as a nice-to-have, a way to monitor their system and get real-time notification when certain system limits are hit.  
 
 
 ## System Architecture and Workflow
