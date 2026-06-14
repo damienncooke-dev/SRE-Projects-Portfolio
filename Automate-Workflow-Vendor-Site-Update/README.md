@@ -24,5 +24,14 @@ An online fruit reseller is manually updating their website with supplier inform
    - A final script will generate a PDF report and send it to the supplier via email.
    - Email notifying of system monitoring incidents. 
 
+
 ## Key Features and Components
 
+* **Automated Data Ingestion** - Created bash pipeline for data retrieval of .tar source file and extraction.
+* **Batch Image Processing** - Leveraged `PIL` to programmatically resize and convert images from tiff to jpeg format.
+* **Data Serialization** - Parsed unstructured text file and mapped the information as list of JSON records. 
+* **RESTful API Integration** - Securely transmitted via `request` generated structured records and processed image files via `POST` methond
+* **Automated PDF Generation** - Utilized `reportlab` to generate PDF summary with header and current date of the processed supplier information.
+* **SMTP Email Notification** - Automatically sends notification to supplier with PDF report summary as an attachment.
+* **Observability and Monitoring** - Developed a resource monitoring script leveraging `psutil` and `shutil` to track real-time CPU utilization, memory thresholds, disk space availability and internal network adapter. 
+* **SMTP Error Alert Notification** - Send email alert with error condition and asap response notification.
