@@ -6,8 +6,8 @@ An online fruit reseller is manually updating their website with supplier inform
 
 ## System Architecture and Workflow
 1. **Data Input**
-2. File is downloaded from a website and saved to local directory/root folder.
-3. File contents is extracted to directory in root folder [supplier-data:images, supplier-data:descriptions].
+   - File is downloaded from a website and saved to local directory/root folder.
+   - File contents is extracted to directory in root folder [supplier-data:images, supplier-data:descriptions].
 4. **Data Processing**  
 		a. A script to process the images will iterate over the image files and perform the following:
 			i. Resize image to 600x400.
