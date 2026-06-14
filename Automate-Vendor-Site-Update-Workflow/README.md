@@ -8,18 +8,18 @@ An online fruit reseller is manually updating their website with supplier inform
 1. **Data Input**
    - File is downloaded from a website and saved to local directory/root folder.
    - File contents is extracted to directory in root folder [supplier-data:images, supplier-data:descriptions].
-4. **Data Processing**
+2. **Data Processing**
    - A script to process the images will iterate over the image files and perform the following:
      - Resize image to 600x400.
      - Convert image from 'RGBA' to 'RGB' - (JPEG format does not support the 'Alpha' transparency layer and it has to be stripped away.  Also it makes the file size smaller. ).
      - Save the image in JPEG format.
-	- An upload images script will upload the modified jpeg images to the company's website.
-	- A script to process the description text files will iterate over the text files, extracting the:
+   - An upload images script will upload the modified jpeg images to the company's website.
+   - A script to process the description text files will iterate over the text files, extracting the:
 	 - Name of the product.
 	 - The weight of the product.
 	 - The full description.
-		d. The script will construct a JSON representation of the product description and associated image and upload to company's website.
-		e. Nice-to-have:  A script to monitor system metrics; disk utilization, cpu and memory saturation and checking if the computer's internal network adapter and TCP/IP stack is functional.
-6. **Data Output**
+   - The script will construct a JSON representation of the product description and associated image and upload to company's website.
+   - Nice-to-have:  A script to monitor system metrics; disk utilization, cpu and memory saturation and checking if the computer's internal network adapter and TCP/IP stack is functional.
+3. **Data Output**
 	a. A final script will generate a PDF report and send it to the supplier via email.
 Email notifying of system monitoring incidents. 
