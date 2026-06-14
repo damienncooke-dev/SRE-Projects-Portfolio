@@ -22,7 +22,7 @@ An online fruit reseller is manually updating their website with supplier inform
    - Nice-to-have:  A script to monitor system metrics; disk utilization, cpu and memory saturation and checking if the computer's internal network adapter and TCP/IP stack is functional.
 3. **Data Output**
    - A final script will generate a PDF report and send it to the supplier via email.
-   - Email notifying of system monitoring incidents. 
+   - Email alert notifying of system monitoring incidents and response priority. 
 
 
 ## Key Features and Components
