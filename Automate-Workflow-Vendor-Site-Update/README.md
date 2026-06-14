@@ -9,7 +9,7 @@ An online fruit reseller is manually updating their website with supplier inform
    - A tar file is downloaded from a website and saved to local directory/root folder.
    - File contents are extracted to directory in root folder [`supplier-data:images`, `supplier-data:descriptions`].
 2. **Data Processing**
-   - A script to process the images will iterate over the image files and perform the following:
+   - A script to process the images will iterate over the `tiff` image files and perform the following:
      - Resize image to 600x400.
      - Convert image from 'RGBA' to 'RGB' - (JPEG format does not support the 'Alpha' transparency layer and it has to be stripped away.  Also it makes the file size smaller. ).
      - Save the image in JPEG format.
