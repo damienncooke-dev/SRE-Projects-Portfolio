@@ -7,7 +7,7 @@ An online fruit reseller is manually updating their website with supplier inform
 ## System Architecture and Workflow
 1. **Data Input**
    - File is downloaded from a website and saved to local directory/root folder.
-   - File contents is extracted to directory in root folder [supplier-data:images, supplier-data:descriptions].
+   - File contents is extracted to directory in root folder [`supplier-data:images`, `supplier-data:descriptions`].
 2. **Data Processing**
    - A script to process the images will iterate over the image files and perform the following:
      - Resize image to 600x400.
@@ -21,5 +21,6 @@ An online fruit reseller is manually updating their website with supplier inform
    - The script will construct a JSON representation of the product description and associated image and upload to company's website.
    - Nice-to-have:  A script to monitor system metrics; disk utilization, cpu and memory saturation and checking if the computer's internal network adapter and TCP/IP stack is functional.
 3. **Data Output**
-	a. A final script will generate a PDF report and send it to the supplier via email.
-Email notifying of system monitoring incidents. 
+   - A final script will generate a PDF report and send it to the supplier via email.
+   - Email notifying of system monitoring incidents. 
+
