@@ -24,3 +24,5 @@ An online fruit reseller is manually updating their website with supplier inform
    - A final script will generate a PDF report and send it to the supplier via email.
    - Email notifying of system monitoring incidents. 
 
+## Key Features and Components
+
