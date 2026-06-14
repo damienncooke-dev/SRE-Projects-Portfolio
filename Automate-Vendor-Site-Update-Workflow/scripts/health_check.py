@@ -36,7 +36,7 @@ if mem.available < target:
     message = emails.generate_error_email(subject, body)
     emails.send_email(message)
 
-# Checks hostname and if cannot be resolved to "127.0.0.1" sends an email
+# Checks internal network adapter and TCP/IP stack by trying to resolve hostname to "127.0.0.1" and sends an email if it can't
 hostname = socket.gethostbyname('localhost')
 if hostname != '127.0.0.1':
     subject = "Error - localhost cannot be resolved to 127.0.0.1"
