@@ -1,7 +1,7 @@
 # Automate Workflow - Vendor Site Update
 
 ## Project Overview
-An online fruit reseller is manually updating their website with supplier information regarding the fruit products they sell by manually uploading images of the product and copy/pasting their associated text descriptions into a website text box. They want to automate this workflow as well as automatically generate an email confirmation to the supplier of the information they received. Also, due to a recent spate of system issues they would like, as a nice-to-have, a way to monitor their system and get real-time notification when certain system events occur.
+An online fruit reseller is regularly updating their website with supplier provided information regarding the fruit products they sell online. The company manually uploads images of the product and copy/paste their associated text descriptions into a website text box. They want to automate this workflow as well as automatically generate an email confirmation to the supplier regarding the information they received. Also, due to a recent spate of system issues they would like, as a nice-to-have, a way to monitor their system and get real-time notification when certain system events occur.
 
 <br>
 
