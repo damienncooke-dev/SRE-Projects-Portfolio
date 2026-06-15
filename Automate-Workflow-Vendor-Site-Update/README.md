@@ -137,7 +137,7 @@ This project is built with a modular design to ensure clean separation of functi
    ```
 3. Create a virtual environment in which to install dependencies and run scripts:
    ```python
-      =[Ubuntu/Debian]=
+      # =[Ubuntu/Debian]=
 
       sudo apt update                              # update the package manager
       sudo apt install python3-pip python3-venv    # install pip and virtual environment
@@ -149,7 +149,7 @@ This project is built with a modular design to ensure clean separation of functi
       pip3 show setuptools                         # check setuptools version
    
       
-      =[RHEL/CentOS]=
+      # =[RHEL/CentOS]=
 
       sudo dnf install python3-pip python3-venv    # install pip and virtual environment
       python3 -m venv .venv                        # creates the virtual environment
@@ -160,7 +160,7 @@ This project is built with a modular design to ensure clean separation of functi
       pip3 show setuptools                         # check setuptools version
    
       
-      =[MacOS]=
+      # =[MacOS]=
    
       python3 -m venv .venv                        # creates the virtual environment
       source .venv/bin/activate                    # activates the virtual environment
