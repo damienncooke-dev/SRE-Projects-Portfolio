@@ -21,9 +21,12 @@ An online fruit reseller is manually updating their website with supplier inform
 This project is built with a modular design to ensure clean separation of functionality and reusability:
 
 ### Data Flow
-   * **<u>Input:</u>** Unstructured Text File, TIFF Image Files, `.dotenv` File for Environment Variables
-   * **<u>Processing:</u>** Download and extract compressed file, Resize and convert TIFF image files, Read text files and serialize into JSON format, Generate PDF Report, Montor system metrics for threshold violation, Create email object with attachment and send, Create email object for alert notification and send.
-   * **<u>Output:</u>** Resized and Converted JPEG Image Files, Generated PDF Report, JSON Payload for REST API POST
+   * **Input:** 
+       > Unstructured Text File, TIFF Image Files, `.dotenv` File for Environment Variables
+   * **Processing:** 
+       > Download and extract compressed file, Resize and convert TIFF image files, Read text files and serialize into JSON format, Generate PDF Report, Montor system metrics for threshold violation, Create email object with attachment and send, Create email object for alert notification and send.
+   * **Output:** 
+       > Resized and Converted JPEG Image Files, Generated PDF Report, JSON Payload for REST API POST
 
 ### Artifacts
    * `dowload_vendor_data.sh`:
@@ -119,6 +122,7 @@ This project is built with a modular design to ensure clean separation of functi
 * Ability to create a virtual environment
 * Ability to reach external URLs
 * Ability to send email notifications using SMTP
+* Ability to clone a repository from GitHub
 
 ### Installation
 1. Clone the repository: `git clone https://github.com/damienncooke-dev/Automation-Portfolio.git `
@@ -145,7 +149,7 @@ This project is built with a modular design to ensure clean separation of functi
    ```python
       pip list                      # commad to list installed packages
    ```
-   ```python
+   ```
       Listed Packages:
       - certifi
       - charset-normalizer
@@ -181,4 +185,7 @@ This project is built with a modular design to ensure clean separation of functi
       EMAIL_SERVER= # email server address: e.g. smtp.gmail.com #
       EMAIL_PORT= # port 587 is the default port for TLS #
    ```
-8.
+7. Setup is complete!
+
+## Runtime and Output Screenshots
+
