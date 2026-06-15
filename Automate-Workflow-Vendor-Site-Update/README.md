@@ -4,7 +4,6 @@
 An online fruit reseller is manually updating their website with supplier information regarding the fruit products they sell by manually uploading images of the product and providing their associated text description. They want to automate this workflow as well as automatically generate an email notifying the supplier of the updated information. Due to a recent spate of system issues they also want, as a nice-to-have, a way to monitor their system and get real-time notification when certain system events occur.
 
 
-
 ## Key Features and Components
 
 * **Automated Data Ingestion** - Created bash pipeline for data retrieval of .tar source file and extraction.
@@ -15,7 +14,6 @@ An online fruit reseller is manually updating their website with supplier inform
 * **SMTP Email Notification** - Automatically sends notification to supplier with PDF report summary as an attachment.
 * **Observability and Monitoring** - Developed a resource monitoring script leveraging `psutil` and `shutil` to track real-time CPU utilization, memory thresholds, disk space availability and internal network adapter.
 * **SMTP Error Alert Notification** - Send email alert with error condition and asap response notification.
-
 
 
 ## System Architecture and Workflow
@@ -121,9 +119,6 @@ This project is built with a modular design to ensure clean separation of functi
 
 ### Installation
 1. Clone the repository:
-
-
-
 
 
 
