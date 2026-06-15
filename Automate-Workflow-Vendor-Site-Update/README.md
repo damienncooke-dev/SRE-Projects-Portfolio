@@ -137,13 +137,38 @@ This project is built with a modular design to ensure clean separation of functi
    ```
 3. Create a virtual environment in which to install dependencies and run scripts:
    ```python
-      python3 -m venv .venv         # creates the virtual environment
-      source .venv/bin/activate     # activates the virtual environment
-      pip3 install --upgrade pip    # update pip to latest version
-      pip3 --version                # check pip version
-      pip3 install setuptools       # update to latest setuptools
-      pip3 show setuptools          # check setuptools version
+      =[Ubuntu/Debian]=
 
+      sudo apt update                              # update the package manager
+      sudo apt install python3-pip python3-venv    # install pip and virtual environment
+      python3 -m venv .venv                        # creates the virtual environment
+      source .venv/bin/activate                    # activates the virtual environment
+      python3 -m pip install --upgrade pip         # update pip to latest version
+      pip3 --version                               # check pip version
+      pip3 install --upgrade setuptools            # update to latest setuptools
+      pip3 show setuptools                         # check setuptools version
+   
+      
+      =[RHEL/CentOS]=
+
+      sudo dnf install python3-pip python3-venv    # install pip and virtual environment
+      python3 -m venv .venv                        # creates the virtual environment
+      source .venv/bin/activate                    # activates the virtual environment
+      python3 -m pip install --upgrade pip         # update pip to latest version
+      pip3 --version                               # check pip version
+      pip3 install --upgrade setuptools            # update to latest setuptools
+      pip3 show setuptools                         # check setuptools version
+   
+      
+      =[MacOS]=
+   
+      python3 -m venv .venv                        # creates the virtual environment
+      source .venv/bin/activate                    # activates the virtual environment
+      python3 -m pip install --upgrade pip         # update pip to latest version
+      pip3 --version                               # check pip version
+      pip3 install --upgrade setuptools            # update to latest setuptools
+      pip3 show setuptools                         # check setuptools version
+   
    ```
 4. Install the dependencies using the `requirements.txt` file:
    ```python
@@ -189,7 +214,26 @@ This project is built with a modular design to ensure clean separation of functi
       EMAIL_SERVER= # email server address: e.g. smtp.gmail.com #
       EMAIL_PORT= # port 587 is the default port for TLS #
    ```
-7. Setup is complete!
+7. Check the directory structure is as follows:
+     ```
+     Automate-Workflow-Vendor-Site/
+        ├── outfiles/
+        │   └── .gitkeep 
+        ├── scripts/
+        │   └─changeImage.py
+        │   └─download_vendor_data.sh
+        │   └─emails.py
+        │   └─health_check.py
+        │   └─report_email.py
+        │   └─reports.py
+        │   └─run.py
+        │   └─supplier_image_upload.py
+        ├── requirements.txt
+        ├── README.md
+        ├── .dotenv
+     ```
+   
+8. Setup is complete!
 
 <br>
 
