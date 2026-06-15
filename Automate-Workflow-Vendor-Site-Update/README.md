@@ -28,7 +28,7 @@ This project is built with a modular design to ensure clean separation of functi
    * **Processing:** 
        > Download and extract compressed file, Resize and convert TIFF image files, Read text files and serialize into JSON format, Generate PDF Report, Montor system metrics for threshold violation, Create email object with attachment and send, Create email object for alert notification and send.
    * **Output:** 
-       > Resized and Converted JPEG Image Files, Generated PDF Report, JSON Payload for REST API POST
+       > Resized and Converted JPEG Image Files, Generated PDF Report, JSON Payload for REST API POST, Email Notification Sent.
 
 ### Artifacts
    * `dowload_vendor_data.sh`:
