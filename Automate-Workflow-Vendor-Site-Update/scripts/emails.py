@@ -42,7 +42,7 @@ def send_email(message):
     email_server = os.getenv("EMAIL_SERVER")
     email_port = os.getenv("EMAIL_PORT")
     email_sender = os.getenv("EMAIL_SENDER")
-    email_password = os.getenv("ICLOUD_APP_PASSWORD")
+    email_password = os.getenv("EMAIL_CLIENT_PASSWORD")
     with smtplib.SMTP(email_server, int(email_port)) as server:
        server.starttls()
        server.login(email_sender, email_password)
