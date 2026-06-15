@@ -1,10 +1,10 @@
-/Automate-Vendor-Site-Update-Workflow/scripts/example_upload.py
-/Automate-Vendor-Site-Update-Workflow/outfiles/processed.pdf
-/Automate-Vendor-Site-Update-Workflow/.venv/
-/Automate-Vendor-Site-Update-Workflow/supplier-data/
-/Automate-Vendor-Site-Update-Workflow/.dotenv
-/Automate-Vendor-Site-Update-Workflow/scripts/supplier-data.tar.gz
-/Automate-Vendor-Site-Update-Workflow/scripts/__pycache__
+/Automate-Workflow-Vendor-Site-Update/scripts/example_upload.py
+/Automate-Workflow-Vendor-Site-Update/outfiles/processed.pdf
+/Automate-Workflow-Vendor-Site-Update/.venv/
+/Automate-Workflow-Vendor-Site-Update/supplier-data/
+/Automate-Workflow-Vendor-Site-Update/.dotenv
+/Automate-Workflow-Vendor-Site-Update/scripts/supplier-data.tar.gz
+/Automate-Workflow-Vendor-Site-Update/scripts/__pycache__
 .idea
 
 
