@@ -265,7 +265,11 @@ This project is built with a modular design to ensure clean separation of functi
    ```python
       scripts % ls -l ../supplier-data/images/*
    ```
+   <img width="800" height="485" alt="images_dir_converted" src="https://github.com/user-attachments/assets/cff283bb-ba26-47d7-957d-b69561993e78" />
 
+
+
+   
 4. **Upload images to company website**
    ```python
       scripts % ./supplier_image_upload.py
