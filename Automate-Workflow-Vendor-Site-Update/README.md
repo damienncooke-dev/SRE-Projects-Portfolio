@@ -255,7 +255,8 @@ This project is built with a modular design to ensure clean separation of functi
    
    <img width="631" height="640" alt="dir_contents_supp_data" src="https://github.com/user-attachments/assets/b8bc8790-5c97-40fc-83f4-35c94243c647" />
 
-   <br>
+
+<br>
    
 2. **Resize and convert TIFF images to JPEG format**
    ```python
@@ -266,10 +267,11 @@ This project is built with a modular design to ensure clean separation of functi
       scripts % ls -l ../supplier-data/images/*
    ```
    <img width="800" height="485" alt="images_dir_converted" src="https://github.com/user-attachments/assets/cff283bb-ba26-47d7-957d-b69561993e78" />
-
-   <br>
    
-4. **Upload images to company website**
+   
+<br>
+   
+3. **Upload images to company website**
    ```python
       scripts % ./supplier_image_upload.py
    ```
@@ -279,7 +281,7 @@ This project is built with a modular design to ensure clean separation of functi
    
    <img width="419" height="552" alt="confirm_images_upload" src="https://github.com/user-attachments/assets/305280e9-a223-458b-b066-ec631f89fcdb" />
 
-   <br>
+<br>
    
 4. **Process the text descriptions and upload to website**
    ```python
@@ -303,7 +305,8 @@ This project is built with a modular design to ensure clean separation of functi
 
    <img width="2333" height="1484" alt="confirm_text_and_images" src="https://github.com/user-attachments/assets/2ce32744-44ae-43fc-a36b-9ae2e9267413" />
 
-   <br>
+
+<br>
 
 5. **Generate PDF summary report and email the report**
    > NOTE: <br>
@@ -325,7 +328,45 @@ This project is built with a modular design to ensure clean separation of functi
 
    <img width="604" height="604" alt="PDF_summary" src="https://github.com/user-attachments/assets/181fbce2-474a-4be5-9eab-599f703c5dd4" />
 
-   <br>
+<br>
 
-6. 
+6. **Demonstrate the Health Script ability to monitor CPU, memory, disk usage, TCP/IP stack/network adapter**
+   > 1. To effectively demonstrate health monitoring, the script will have to be updated to values that would trigger a threshold breach. <br>
+   > 2. For each breach, an email will be sent. <br>
+
+   > **Check Disk Utilization** <br>
+   > * This check will be triggered if the avaialbe disk space is less than 20% <br>
+   > * Change the `disk_threshold` value in `health_check.py` to a value that represents 90% space available. <br>
+   >   [FROM: `du_free < 20`] [TO: `du_free < 90`] <br>
+   >   [FROM: "Error - Available disk space is less than 20%"] [TO: "Error - Available disk space is less than 90%"]
+   > * Run the script: [ `./health_check.py` ] <br>
+   > * Check for email notification: <br>
+   > * Normalize script: <br>
+   >   [FROM: `du_free < 90`] [TO: `du_free < 20`] <br>
+   >   [FROM: "Error - Available disk space is less than 90%"] [TO: "Error - Available disk space is less than 20%"]
+   > > [add image here]
+   
+   > **Check CPU Utilization** <br>
+   > * This check will be triggered if the avaialbe CPU utilization is greater than 80% <br>
+   > * Change the `cpu_util` value in `health_check.py` to a value that represents 10% cpu utilization. <br>
+   >   [FROM: `cpu_util > 80`] [TO: `cpu_util > 10`] <br>
+   >   [FROM: "Error - CPU usage is over 80%"] [TO: "Error - CPU usage is over 10%"]
+   > * Run the script: [ `./health_check.py` ] <br>
+   > * Check for email notification: <br>
+   > * Normalize script: <br>
+   >   [FROM: `cpu_util > 10`] [TO: `cpu_util > 80`] <br>
+   >   [FROM: "Error - CPU usage is over 10%"] [TO: "Error - CPU usage is over 80%"] <br>
+   > > [add image here]
+   
+   > **Virtual Memory Utilization** <br>
+   > * This check will track virtual memory pressure and alert if the available virtual memory is less than 100MB <br>
+   > * Change the `target` calculation in `health_check.py` from 100MB to 100GB to make target greater than available <br>
+   >   [FROM: `target = 100 * 1024 * 1024`] [TO: `target = 100 * 1024 * 1024 * 1024`] <br>
+   >   [FROM: "Error - Available memory is less than 100MB"] [TO: "Error - Available memory is less than 1GB"] <br>
+   > * Run the script: [ `./health_check.py` ] <br>
+   > * Check for email notification: <br>
+   > * Normalize script: <br>
+   >   [FROM: `target = 100 * 1024 * 1024 * 1024`] [TO: `target = 100 * 1024 * 1024`] <br>
+   >   [FROM: "Error - Available memory is less than 1GB"] [TO: "Error - Available memory is less than 100MB"] <br>
+   > > [add image here]
 
