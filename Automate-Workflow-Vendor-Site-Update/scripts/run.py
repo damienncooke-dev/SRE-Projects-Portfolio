@@ -49,3 +49,4 @@ print("Uploaded product description to: {}".format(url))
 print("Check the website for the updated text descriptions and product images here: {}".format(url_main))
 
 
+
