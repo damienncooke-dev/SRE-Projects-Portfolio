@@ -255,9 +255,9 @@ This project is built with a modular design to ensure clean separation of functi
    
    <img width="631" height="640" alt="dir_contents_supp_data" src="https://github.com/user-attachments/assets/b8bc8790-5c97-40fc-83f4-35c94243c647" />
 
-
+   <br>
    
-3. **Resize and convert TIFF images to JPEG format**
+2. **Resize and convert TIFF images to JPEG format**
    ```python
       scripts % ./changeImage.py
    ```
@@ -268,9 +268,9 @@ This project is built with a modular design to ensure clean separation of functi
    <img width="800" height="485" alt="images_dir_converted" src="https://github.com/user-attachments/assets/cff283bb-ba26-47d7-957d-b69561993e78" />
 
 
-
+<br>
    
-4. **Upload images to company website**
+3. **Upload images to company website**
    ```python
       scripts % ./supplier_image_upload.py
    ```
@@ -278,8 +278,9 @@ This project is built with a modular design to ensure clean separation of functi
    
    > See output for website URL.
 
+<br>
    
-5. **Process the text descriptions and upload to website**
+4. **Process the text descriptions and upload to website**
    ```python
       scripts % ./run.py
    ```
@@ -299,7 +300,9 @@ This project is built with a modular design to ensure clean separation of functi
    ```
    > See output for website URL to product description and images
 
-6. **Generate PDF summary report and email the report**
+<br>
+
+5. **Generate PDF summary report and email the report**
    > NOTE: <br>
    > Prior to running this step, you must have the following environment variables set in your `.dotenv` file:
    > ```
@@ -317,6 +320,7 @@ This project is built with a modular design to ensure clean separation of functi
    > * The email body should contain: "All fruits are uploaded to our website successfully. A detailed list is attached to this email." <br>
    > * The attachment should be a PDF file with the date the updates took place. <br>
 
+<br>
 
-7. 
+6. 
 
