@@ -218,7 +218,10 @@ This project is built with a modular design to ensure clean separation of functi
    ```python
       scripts % ./download_vendor_data.sh
    ```
-     ...check directory structure looks like this...
+
+    <img width="640" height="84" alt="download_supp_data" src="https://github.com/user-attachments/assets/93f01eee-5987-48d8-b00d-1eb1266decb7" />
+
+    ...check directory structure looks like this...
 
    ```
       Automate-Workflow-Vendor-Site/
@@ -249,9 +252,10 @@ This project is built with a modular design to ensure clean separation of functi
    ```python
       scripts % ls -l ../supplier-data/*
    ```
-   <img width="896" height="118" alt="download_supp_data" src="https://github.com/user-attachments/assets/5fa59834-b6c9-43c0-9b09-f16c21e6bea4" />
+ 
+
    
-2. **Resize and convert TIFF images to JPEG format**
+3. **Resize and convert TIFF images to JPEG format**
    ```python
       scripts % ./changeImage.py
    ```
@@ -260,7 +264,7 @@ This project is built with a modular design to ensure clean separation of functi
       scripts % ls -l ../supplier-data/images/*
    ```
 
-3. **Upload images to company website**
+4. **Upload images to company website**
    ```python
       scripts % ./supplier_image_upload.py
    ```
@@ -269,7 +273,7 @@ This project is built with a modular design to ensure clean separation of functi
    > See output for website URL.
 
    
-4. **Process the text descriptions and upload to website**
+5. **Process the text descriptions and upload to website**
    ```python
       scripts % ./run.py
    ```
@@ -289,7 +293,7 @@ This project is built with a modular design to ensure clean separation of functi
    ```
    > See output for website URL to product description and images
 
-5. **Generate PDF summary report and email the report**
+6. **Generate PDF summary report and email the report**
    > NOTE: <br>
    > Prior to running this step, you must have the following environment variables set in your `.dotenv` file:
    > ```
@@ -308,5 +312,5 @@ This project is built with a modular design to ensure clean separation of functi
    > * The attachment should be a PDF file with the date the updates took place. <br>
 
 
-6. 
+7. 
 
