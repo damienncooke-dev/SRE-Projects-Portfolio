@@ -267,18 +267,19 @@ This project is built with a modular design to ensure clean separation of functi
    ```
    <img width="800" height="485" alt="images_dir_converted" src="https://github.com/user-attachments/assets/cff283bb-ba26-47d7-957d-b69561993e78" />
 
-
-<br>
+   <br>
    
-3. **Upload images to company website**
+4. **Upload images to company website**
    ```python
       scripts % ./supplier_image_upload.py
    ```
    ...navigate to website and check images uploaded...
    
    > See output for website URL.
+   
+   <img width="419" height="552" alt="confirm_images_upload" src="https://github.com/user-attachments/assets/305280e9-a223-458b-b066-ec631f89fcdb" />
 
-<br>
+   <br>
    
 4. **Process the text descriptions and upload to website**
    ```python
@@ -300,7 +301,9 @@ This project is built with a modular design to ensure clean separation of functi
    ```
    > See output for website URL to product description and images
 
-<br>
+   <img width="2333" height="1484" alt="confirm_text_and_images" src="https://github.com/user-attachments/assets/2ce32744-44ae-43fc-a36b-9ae2e9267413" />
+
+   <br>
 
 5. **Generate PDF summary report and email the report**
    > NOTE: <br>
@@ -320,7 +323,9 @@ This project is built with a modular design to ensure clean separation of functi
    > * The email body should contain: "All fruits are uploaded to our website successfully. A detailed list is attached to this email." <br>
    > * The attachment should be a PDF file with the date the updates took place. <br>
 
-<br>
+   <img width="604" height="604" alt="PDF_summary" src="https://github.com/user-attachments/assets/181fbce2-474a-4be5-9eab-599f703c5dd4" />
+
+   <br>
 
 6. 
 
