@@ -252,7 +252,9 @@ This project is built with a modular design to ensure clean separation of functi
    ```python
       scripts % ls -l ../supplier-data/*
    ```
- 
+   
+   <img width="631" height="640" alt="dir_contents_supp_data" src="https://github.com/user-attachments/assets/b8bc8790-5c97-40fc-83f4-35c94243c647" />
+
 
    
 3. **Resize and convert TIFF images to JPEG format**
