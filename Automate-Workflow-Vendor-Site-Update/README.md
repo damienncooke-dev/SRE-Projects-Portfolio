@@ -344,6 +344,7 @@ This project is built with a modular design to ensure clean separation of functi
    > * Normalize script: <br>
    >   [FROM: `du_free < 90`] [TO: `du_free < 20`] <br>
    >   [FROM: "Error - Available disk space is less than 90%"] [TO: "Error - Available disk space is less than 20%"]
+   >   <br>
    > > ---
    > > <img width="655" height="185" alt="disk_usage_alert" src="https://github.com/user-attachments/assets/6f617d80-eeee-4de3-9a7c-8d14135d2e60" />
 
@@ -358,6 +359,7 @@ This project is built with a modular design to ensure clean separation of functi
    > * Normalize script: <br>
    >   [FROM: `cpu_util > 10`] [TO: `cpu_util > 80`] <br>
    >   [FROM: "Error - CPU usage is over 10%"] [TO: "Error - CPU usage is over 80%"] <br>
+   >   <br>
    > > ---
    > > <img width="655" height="185" alt="cpu_threshold_alert" src="https://github.com/user-attachments/assets/f1ae81eb-d544-40ef-a474-c0031d53496d" />
 
@@ -372,6 +374,7 @@ This project is built with a modular design to ensure clean separation of functi
    > * Normalize script: <br>
    >   [FROM: `target = 100 * 1024 * 1024 * 1024`] [TO: `target = 100 * 1024 * 1024`] <br>
    >   [FROM: "Error - Available memory is less than 1GB"] [TO: "Error - Available memory is less than 100MB"] <br>
+   >   <br> 
    > > ---
    > > <img width="655" height="185" alt="virtual_memory_threshold_alert" src="https://github.com/user-attachments/assets/f4c901b7-1ad2-461c-951e-8de7cd4782e8" />
 
