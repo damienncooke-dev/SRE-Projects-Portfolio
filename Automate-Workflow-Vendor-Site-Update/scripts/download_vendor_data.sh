@@ -5,18 +5,21 @@
 curl -O https://storage.googleapis.com/gwg-content/gic223/supplier-data.tar.gz
 
 
-TAR_FILE="$PWD/supplier-data.tar.gz"
-DATA_DIR="$PWD/supplier-data"
+TAR_FILE="supplier-data.tar.gz"
+TAR_PATH="../$TAR_FILE"
+DATA_DIR="../supplier-data"
 
-if [[ -f "$TAR_FILE" && ! -d "$DATA_DIR" ]] ; then
+mv "$TAR_FILE" ../
+
+if [[ -f "$TAR_PATH" && ! -d "$DATA_DIR" ]] ; then
   echo "Extracting .tar File"
-  tar -xzf $TAR_FILE
-elif [[ -f "$TAR_FILE" && -d "$DATA_DIR" ]]; then
+  tar -xzf $TAR_PATH -C ../
+elif [[ -f "$TAR_PATH" && -d "$DATA_DIR" ]]; then
   echo "Removing Old Directory:" $DATA_DIR
   rm -Rf  $DATA_DIR
   sleep 2
   echo "Extracting new .tar file"
-  tar -xzf $TAR_FILE
+  tar -xzf $TAR_PATH -C ../
 else
   echo "Check for" $TAR_FILE
 fi
