@@ -60,9 +60,8 @@ This project is built with a modular design to ensure clean separation of functi
       > * A script to monitor system metrics; disk utilization, cpu and memory saturation and checking if the computer's internal network adapter and if TCP/IP stack is functional.
       > * Calls function from `emails.py` to send email alert notifying of system monitoring incidents and response priority.
 
-### Directory Structure
+### Directory Structure 
 
-        
         Automate-Workflow-Vendor-Site/
         ├── outfiles/
         │   └── .gitkeep (to keep folder intact in the structure)
@@ -77,32 +76,8 @@ This project is built with a modular design to ensure clean separation of functi
         │   └─supplier_image_upload.py
         ├── requirements.txt
         ├── README.md
+        ├── .dotenv
 
-
-
-   ...after running `download_vendor_data.sh`...
-
-
-
-        Automate-Workflow-Vendor-Site/
-        ├── outfiles/
-        │   └── .gitkeep (to keep folder intact in the structure)
-        ├── supplier-data/
-        │   └── descriptions/
-        │       └── *.txt ( product description files )
-        │   └── images/
-        │       └── *.tiff ( product images)
-        ├── scripts/
-        │   └─changeImage.py
-        │   └─download_vendor_data.sh
-        │   └─emails.py
-        │   └─health_check.py
-        │   └─report_email.py
-        │   └─reports.py
-        │   └─run.py
-        │   └─supplier_image_upload.py
-        ├── requirements.txt
-        ├── README.md
 
 <br>
 
@@ -237,5 +212,100 @@ This project is built with a modular design to ensure clean separation of functi
 
 <br>
 
-## Runtime and Output Screenshots
+## Runbook 
+
+1. **Download and extract supplier information**
+   ```python
+      scripts % ./download_vendor_data.sh
+   ```
+     ...check directory structure looks like this...
+
+   ```
+      Automate-Workflow-Vendor-Site/
+        ├── outfiles/
+        │   └── .gitkeep (to keep folder intact in the structure)
+        ├── supplier-data/
+        │   └── descriptions/
+        │       └── *.txt ( product description files )
+        │   └── images/
+        │       └── *.tiff ( product images)
+        ├── scripts/
+        │   └─changeImage.py
+        │   └─download_vendor_data.sh
+        │   └─emails.py
+        │   └─health_check.py
+        │   └─report_email.py
+        │   └─reports.py
+        │   └─run.py
+        │   └─supplier_image_upload.py
+        ├── requirements.txt
+        ├── README.md
+        ├── .dotenv
+   
+   ```
+   
+   ...check directory contents...
+
+   ```python
+      scripts % ls -l ../supplier-data/*
+   ```
+
+2. **Resize and convert TIFF images to JPEG format**
+   ```python
+      scripts % ./changeImage.py
+   ```
+      ...check images directory...
+   ```python
+      scripts % ls -l ../supplier-data/images/*
+   ```
+
+3. **Upload images to company website**
+   ```python
+      scripts % ./supplier_image_upload.py
+   ```
+   ...navigate to website and check images uploaded...
+   
+   > See output for website URL.
+
+   
+4. **Process the text descriptions and upload to website**
+   ```python
+      scripts % ./run.py
+   ```
+   ...you should see successfull http response code 201 for 10 files uploaded...
+   
+   ```
+   201
+   201
+   201
+   201
+   201
+   201
+   201
+   201
+   201
+   201
+   ```
+   > See output for website URL to product description and images
+
+5. **Generate PDF summary report and email the report**
+   > NOTE: <br>
+   > Prior to running this step, you must have the following environment variables set in your `.dotenv` file:
+   > ```
+   > EMAIL_SENDER=
+   > EMAIL_RECIPIENT=
+   > EMAIL_CLIENT_PASSWORD=
+   > EMAIL_SERVER=
+   > EMAIL_PORT=587
+   > ```
+   ```python
+      scripts % ./report_email.py
+   ```
+   > * You should receive and email at the email address you specified in your `.dotenv` file. <br>
+   > * The subject line should read: "Upload Completed - Online Fruit Store" <br>
+   > * The email body should contain: "All fruits are uploaded to our website successfully. A detailed list is attached to this email." <br>
+   > * The attachment should be a PDF file with the date the updates took place. <br>
+
+
+6. 
 
