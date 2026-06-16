@@ -26,12 +26,12 @@ images = [file.name for file in image_dir.iterdir()]
 
 url = f"http://{fruit_store_url}/upload/"  # URL to upload images to
 
-# for file in images:   # Iterate over list of image filenames
-#    fname, ext = os.path.splitext(file)  # Get filename, extension
-#    image_file = image_dir / file  # Get full path to image file
-#    if ".jpeg" in ext:  # Only upload .jpeg files
-#       with open (image_file, 'rb') as opened:  # Open image file in binary mode
-#          result = requests.post(url, files={'file': opened})  # POST request to upload image
+for file in images:   # Iterate over list of image filenames
+   fname, ext = os.path.splitext(file)  # Get filename, extension
+   image_file = image_dir / file  # Get full path to image file
+   if ".jpeg" in ext:  # Only upload .jpeg files
+      with open (image_file, 'rb') as opened:  # Open image file in binary mode
+         result = requests.post(url, files={'file': opened})  # POST request to upload image
 
 print("Uploaded images to: {}".format(url))
 print("Check the website for the uploaded images.")
