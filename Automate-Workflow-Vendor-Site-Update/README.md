@@ -344,7 +344,7 @@ This project is built with a modular design to ensure clean separation of functi
    > * Normalize script: <br>
    >   [FROM: `du_free < 90`] [TO: `du_free < 20`] <br>
    >   [FROM: "Error - Available disk space is less than 90%"] [TO: "Error - Available disk space is less than 20%"]
-   > > <img width="935" height="263" alt="disk_usage_alert" src="https://github.com/user-attachments/assets/6f617d80-eeee-4de3-9a7c-8d14135d2e60" />
+   > > <img width="467" height="131" alt="disk_usage_alert" src="https://github.com/user-attachments/assets/6f617d80-eeee-4de3-9a7c-8d14135d2e60" />
 
    
    **Check CPU Utilization** <br>
