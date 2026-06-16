@@ -4,7 +4,22 @@
 # Note: 'wget' does not work on MacOS by default. Use 'curl -O' to get file from URL and save.
 curl -O https://storage.googleapis.com/gwg-content/gic223/supplier-data.tar.gz
 
-# Use 'tar -xf <file>' to extract
-# Need update to script to ask for confirmation to extract file
+
+TAR_FILE="$PWD/supplier-data.tar.gz"
+DATA_DIR="$PWD/supplier-data"
+
+if [[ -f "$TAR_FILE" && ! -d "$DATA_DIR" ]] ; then
+  echo "Extracting .tar File"
+  tar -xzf $TAR_FILE
+elif [[ -f "$TAR_FILE" && -d "$DATA_DIR" ]]; then
+  echo "Removing Old Directory:" $DATA_DIR
+  rm -Rf  $DATA_DIR
+  sleep 2
+  echo "Extracting new .tar file"
+  tar -xzf $TAR_FILE
+else
+  echo "Check for" $TAR_FILE
+fi
+
 
 
