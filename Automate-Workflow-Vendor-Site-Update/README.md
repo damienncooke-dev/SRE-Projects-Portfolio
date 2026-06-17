@@ -57,7 +57,7 @@ This project is built with a modular design to ensure clean separation of functi
         >  * Generate email without attachment using `email` and `mimetypes` modules.
         >  * Send email using `smtplib` module.
    * `health_check.py`:
-      > * A script to monitor system metrics; disk utilization, cpu and memory saturation and checking if the computer's internal network adapter and if TCP/IP stack is functional.
+      > * A script to monitor system metrics; disk utilization, cpu and memory saturation and checking if the computer's localhost is resolvable to known IP address.
       > * Calls function from `emails.py` to send email alert notifying of system monitoring incidents and response priority.
 
 ### Directory Structure 
