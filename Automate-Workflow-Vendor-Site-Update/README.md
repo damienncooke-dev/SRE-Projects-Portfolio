@@ -330,7 +330,8 @@ This project is built with a modular design to ensure clean separation of functi
 
 <br>
 
-6. **Demonstrate the Health Script ability to monitor CPU, memory, disk usage, TCP/IP stack/network adapter**
+6. **Demonstrate the Health Script ability to monitor CPU, memory, disk usage, network connectivity and DNS**
+   > **NOTE:
    > 1. To effectively demonstrate health monitoring, the script will have to be updated to values that would trigger a threshold breach. <br>
    > 2. For each breach, an email will be sent. <br>
 
