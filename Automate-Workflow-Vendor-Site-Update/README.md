@@ -379,3 +379,16 @@ This project is built with a modular design to ensure clean separation of functi
    > > <img width="655" height="185" alt="virtual_memory_threshold_alert" src="https://github.com/user-attachments/assets/f4c901b7-1ad2-461c-951e-8de7cd4782e8" />
 
 
+   **Network connectivity and DNS check** <br>
+   > * This check will ensure network connectivity to localhost and ability to resolve IP address through DNS <br>
+   > * Change the `hostname` IP in the 'If' statement in `health_check.py` from 127.0.0.1 to 127.0.0.0 to force a mismatch <br>
+   >   [FROM: `hostname != '127.0.0.1`] [TO: `hostname != '127.0.0.0`] <br>
+   >   [FROM: "Error - localhost cannot be resolved to 127.0.0.1. Please respond asap!"] [TO: "Error - localhost cannot be resolved to 127.0.0.0. Please respond asap!"] <br>
+   > * Run the script: [ `./health_check.py` ] <br>
+   > * Check for email notification: <br>
+   > * Normalize script: <br>
+   >   [FROM: `hostname != '127.0.0.0`] [TO: `hostname != '127.0.0.1`] <br>
+   >   [FROM: "Error - localhost cannot be resolved to 127.0.0.0. Please respond asap!"] [TO: "Error - localhost cannot be resolved to 127.0.0.1. Please respond asap!"] <br>
+   >   <br> 
+   > > ---
+   > > [inset image here]
