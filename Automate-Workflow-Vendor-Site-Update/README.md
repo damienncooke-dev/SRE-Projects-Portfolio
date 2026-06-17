@@ -392,4 +392,5 @@ This project is built with a modular design to ensure clean separation of functi
    >   [FROM: "Error - localhost cannot be resolved to 127.0.0.0. Please respond asap!"] [TO: "Error - localhost cannot be resolved to 127.0.0.1. Please respond asap!"] <br>
    >   <br> 
    > > ---
-   > > [inset image here]
+   > > <img width="655" height="185" alt="localhost_connect_check" src="https://github.com/user-attachments/assets/0e7c3087-3452-4a2f-86b6-f12796815eed" />
+
