@@ -334,7 +334,7 @@ This project is built with a modular design to ensure clean separation of functi
    > 1. To effectively demonstrate health monitoring, the script will have to be updated to values that would trigger a threshold breach. <br>
    > 2. For each breach, an email will be sent. <br>
 
-   > **Check Disk Utilization** <br>
+   **Check Disk Utilization** <br>
    > * This check will be triggered if the avaialbe disk space is less than 20% <br>
    > * Change the `disk_threshold` value in `health_check.py` to a value that represents 90% space available. <br>
    >   [FROM: `du_free < 20`] [TO: `du_free < 90`] <br>
@@ -343,10 +343,13 @@ This project is built with a modular design to ensure clean separation of functi
    > * Check for email notification: <br>
    > * Normalize script: <br>
    >   [FROM: `du_free < 90`] [TO: `du_free < 20`] <br>
-   >   [FROM: "Error - Available disk space is less than 90%"] [TO: "Error - Available disk space is less than 20%"]
-   > > [add image here]
+   >   [FROM: "Error - Available disk space is less than 90%"] [TO: "Error - Available disk space is less than 20%"] <br>
+   >   <br>
+   > > ---
+   > > <img width="655" height="185" alt="disk_usage_alert" src="https://github.com/user-attachments/assets/6f617d80-eeee-4de3-9a7c-8d14135d2e60" />
+
    
-   > **Check CPU Utilization** <br>
+   **Check CPU Utilization** <br>
    > * This check will be triggered if the avaialbe CPU utilization is greater than 80% <br>
    > * Change the `cpu_util` value in `health_check.py` to a value that represents 10% cpu utilization. <br>
    >   [FROM: `cpu_util > 80`] [TO: `cpu_util > 10`] <br>
@@ -356,9 +359,12 @@ This project is built with a modular design to ensure clean separation of functi
    > * Normalize script: <br>
    >   [FROM: `cpu_util > 10`] [TO: `cpu_util > 80`] <br>
    >   [FROM: "Error - CPU usage is over 10%"] [TO: "Error - CPU usage is over 80%"] <br>
-   > > [add image here]
+   >   <br>
+   > > ---
+   > > <img width="655" height="185" alt="cpu_threshold_alert" src="https://github.com/user-attachments/assets/f1ae81eb-d544-40ef-a474-c0031d53496d" />
+
    
-   > **Virtual Memory Utilization** <br>
+   **Virtual Memory Utilization** <br>
    > * This check will track virtual memory pressure and alert if the available virtual memory is less than 100MB <br>
    > * Change the `target` calculation in `health_check.py` from 100MB to 100GB to make target greater than available <br>
    >   [FROM: `target = 100 * 1024 * 1024`] [TO: `target = 100 * 1024 * 1024 * 1024`] <br>
@@ -368,5 +374,8 @@ This project is built with a modular design to ensure clean separation of functi
    > * Normalize script: <br>
    >   [FROM: `target = 100 * 1024 * 1024 * 1024`] [TO: `target = 100 * 1024 * 1024`] <br>
    >   [FROM: "Error - Available memory is less than 1GB"] [TO: "Error - Available memory is less than 100MB"] <br>
-   > > [add image here]
+   >   <br> 
+   > > ---
+   > > <img width="655" height="185" alt="virtual_memory_threshold_alert" src="https://github.com/user-attachments/assets/f4c901b7-1ad2-461c-951e-8de7cd4782e8" />
+
 
