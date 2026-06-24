@@ -192,6 +192,10 @@ kubectl create namespace voting
 
 ### Set it as the Default for This Session
 ```bash
+# See the contexts available
+kubectl config get-contexts
+
+# Seth the current context to the namespace
 kubectl config set-context $(kubectl config current-context) --namespace=voting
 ```
 
@@ -487,7 +491,7 @@ containers:
         value: /var/lib/postgresql/data/dbdata
     volumeMounts:
       - name: postgres-storage
-        mountPath: /var/lib/postgresql/data<img width="480" height="204" alt="Screenshot 2026-06-20 at 9 18 03 PM" src="https://github.com/user-attachments/assets/de3ca3f8-2851-48d7-859f-cf4645e031be" />
+        mountPath: /var/lib/postgresql/data
         subPath: dbdata
 
 ```
@@ -523,7 +527,7 @@ kubectl delete pod <results-pod-name>
 <br>
 
 
-## 9. Health Checks — Liveness and Readiness Probes
+## 9. Health Checks & Observability — Liveness and Readiness Probes
 
 **Concept:** Kubernetes doesn't know if your application is actually healthy just because the process is running. Probes let you define what "healthy" means. Liveness probes restart a broken pod. Readiness probes control whether a pod receives traffic.
 
