@@ -195,7 +195,7 @@ kubectl create namespace voting
 # See the contexts available
 kubectl config get-contexts
 
-# Seth the current context to the namespace
+# Set the current context to the namespace
 kubectl config set-context $(kubectl config current-context) --namespace=voting
 ```
 
@@ -314,10 +314,11 @@ There are two types in use here:
 > For development of the manifests in a local environment, the type 'NodePort' is used.  For GCP deployments, the type is changed to 'LoadBalancer'. This tells GCP to provision an external load balancer and expose this service to the internet.<br>
 <br>
 > In the Service manifests for voting and results, set the type to `loadBalancer` 
+
+
 ```bash
 vi ~/Orchestration-Project/K8s-app-deploy/Services/vote-service.yaml   # Change the type to LoadBalancer
 vi ~/Orchestration-Project/K8s-app-deploy/Services/result-service.yaml  # Change the type to LoadBalancer
-
 ```
 
 ### Apply Services
