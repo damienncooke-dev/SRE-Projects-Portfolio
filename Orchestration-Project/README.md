@@ -192,6 +192,10 @@ kubectl create namespace voting
 
 ### Set it as the Default for This Session
 ```bash
+# See the contexts available
+kubectl config get-contexts
+
+# Seth the current context to the namespace
 kubectl config set-context $(kubectl config current-context) --namespace=voting
 ```
 
@@ -474,7 +478,7 @@ db-pvc   Bound    pvc-1a7f5bb0-338f-4b67-...................   1Gi        RWO   
 
 ```
 
-### Mount It in the PostgreSQL Deployment
+### Mount it in the PostgreSQL Deployment
 ```yaml
 volumes:
   - name: postgres-storage
@@ -487,7 +491,7 @@ containers:
         value: /var/lib/postgresql/data/dbdata
     volumeMounts:
       - name: postgres-storage
-        mountPath: /var/lib/postgresql/data<img width="480" height="204" alt="Screenshot 2026-06-20 at 9 18 03 PM" src="https://github.com/user-attachments/assets/de3ca3f8-2851-48d7-859f-cf4645e031be" />
+        mountPath: /var/lib/postgresql/data
         subPath: dbdata
 
 ```
