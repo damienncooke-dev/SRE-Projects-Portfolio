@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vote1
+  labels:
+    app: vote
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vote
+  template:
+    metadata:
+      name: vote
+      labels:
+        app: vote
+    spec:
+      initContainers:
+        - name: startup-delay
+          image: busybox
+          command: ["sh", "-c", "sleep 5"]
+      containers:
+        - name: vote
+          image: dockersamples/examplevotingapp_vote
+          ports:
+            - name: vote
+              containerPort: 80
+          livenessProbe:
+             httpGet:
+               path: /
+               port: 80
+             periodSeconds: 15
+             initialDelaySeconds: 5
+          readinessProbe:
+             httpGet:
+               path: /fake.endpoint
+               port: 80
+             periodSeconds: 5
+             initialDelaySeconds: 10
+
+      
