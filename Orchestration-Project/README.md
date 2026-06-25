@@ -474,8 +474,8 @@ kubectl get pvc
 Watch the STATUS column change from `Pending` to `Bound`. GKE is dynamically provisioning the disk.
 
 ```
-NAME     STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
-db-pvc   Bound    pvc-1a7f5bb0-338f-4b67-...................   1Gi        RWO            standard-rwo   <unset>                 22m
+NNAME     STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+db-pvc    Bound    pvc-b68773be-9464-4b5c-93fa-a41a8091086b   1Gi        RWO            standard-rwo   <unset>                 15m
 
 ```
 
@@ -530,52 +530,224 @@ kubectl delete pod <results-pod-name>
 
 ## 9. Health Checks — Liveness and Readiness Probes
 
-**Concept:** Kubernetes doesn't know if your application is actually healthy just because the process is running. Probes let you define what "healthy" means. Liveness probes restart a broken pod. Readiness probes control whether a pod receives traffic.
+**Concept:** Kubernetes doesn't know if your application is actually healthy just because the process is running. Probes let you define what "healthy" means. Readiness probes control whether a pod receives traffic. Liveness probes restart a broken pod. 
 
-### Add Probes to the vote Deployment
+In the following example, we will first create 2 voting app deployment yaml files and demonstrate what happens when a pod is not ready to receive traffic. Then we will add the readiness probe to the pod that is failing to receive traffic. This will show how the readiness probe will prevent traffic to the failing or delayed pod and indicate a warning that the readiness check failed.
+<br>
+
+### Create 2 voting app yaml files
+
+* Copy voting-app-deployment.yaml to voting-app2-deployment.yaml
+* Rename voiting-app-deployment.yaml to voting-app1-deployment.yaml
+
+
+
+### Update voting app deployment yaml files
+* **voting-app1-deployment.yaml**
+    * Change metadata.name to `vote1`
+    * Add a command to insert a sleep command to the container startup command.
+  
 ```yaml
-livenessProbe:
-  httpGet:
-    path: /
-    port: 80
-  initialDelaySeconds: 10
-  periodSeconds: 15
-  failureThreshold: 3
-readinessProbe:
-  httpGet:
-    path: /
-    port: 80
-  initialDelaySeconds: 5
-  periodSeconds: 10
+# Change to 'vote1'
+metadata:
+  name: vote1
+---
+# Add 'command' and 'args' under spec.template.spec.containers
+spec:
+  template:
+    ...
+    spec:
+      initContainers:
+        - name: 
+          ...
+      containers:
+        - name: vote
+          ...
+          command: ["/bin/sh"]
+          args:
+            - "-c"
+            - "sleep 300"
+  
 ```
+* **voting-app2-deployment.yaml**
+    *  * Change metadata.name to `vote2`
+  
+```yaml
+# Change to 'vote2'
+metadata:
+  name: vote2
+---
+```
+<br>
+
+### Execute test by creating deployment
+
+* This step will presume the necessary components are already deployed.
+   * Configmap for Redis Hostname
+   * Secret for PostgreSQL Credentials
+   * PVC for PostgreSQL
+
+
+* Create a persistent curl shell to issue the curl command to the voting app to see where the request is being sent.
+```bash
+kubectl run curl --image=curlimages/curl -it -- sh
+
+# Exit out of the shell after it is created
+exit
+```
+* Create a deployment and wait for all pod STATUS to say "Running" and  READY to say "1/1"
+```bash
+kubectl create -f ~/Orchestration-Project/K8s-app-deploy/Deployments/
+
+# Monitor the deployment
+kubectl get pods
+```
+...the pod output should look like this...
+
+```
+NAME                      READY   STATUS    RESTARTS       AGE
+curl                      1/1     Running   0              2m16s
+db-9bf4d5686-2s425        1/1     Running   0              17m
+redis-7bb95dd47b-bmhg6    1/1     Running   0              17m
+result-5dcb6664d4-jn7lw   1/1     Running   0              17m
+vote1-69db646fc9-lrb79    1/1     Running   1 (49s ago)    5m53s
+vote2-5cc96fff5-nzvll     1/1     Running   0              6m7s
+worker-545d464b96-2gcpl   1/1     Running   0              6m8s
+```
+
+
+* Once the deployment is in the current state, run the curl command to see where the request is being sent.
+```bash
+# Get the external IP of the vote service
+kubectl get svc
+
+# Note the EXTERNAL-IP of the vote service and insert into the following command
+for i in {1..500}; do
+kubectl exec curl -it -- sh -c 'test=`wget -qO- -T 2  http://<EXTERNAL-IP>:8080 2>&1 | grep -E "container ID"` && echo "$test OK" || echo "Failed"'
+done
+```
+```
+# After running the command and observe your output is similar to this:
+
+          Processed by container ID vote2-fd6d6975f-dqljw OK
+          Processed by container ID vote2-fd6d6975f-dqljw OK
+          Processed by container ID vote2-fd6d6975f-dqljw OK
+Failed
+Failed
+Failed
+Failed
+          Processed by container ID vote2-fd6d6975f-dqljw OK
+Failed
+          Processed by container ID vote2-fd6d6975f-dqljw OK
+Failed
+          Processed by container ID vote2-fd6d6975f-dqljw OK
+          Processed by container ID vote2-fd6d6975f-dqljw OK
+          Processed by container ID vote2-fd6d6975f-dqljw OK
+Failed
+          Processed by container ID vote2-fd6d6975f-dqljw OK
+          Processed by container ID vote2-fd6d6975f-dqljw OK
+Failed
+          Processed by container ID vote2-fd6d6975f-dqljw OK
+          Processed by container ID vote2-fd6d6975f-dqljw OK
+Failed
+Failed
+Failed
+
+
+NOTE - that all the requests are being sent to the vote2 pod and failing on the vote1 pod
+
+```
+
+
+### Add Readiness Probe to the vote1 Deployment
+* Delete the vote1 deployment
+```bash
+kubectl delete deploy vote1
+```
+* Update the vote1 deployment under spec.template.spec.containers to include the readiness probe
+
+```yaml
+spec:
+  template:
+    ...
+    spec:
+      initContainers:
+        - name: 
+          ...
+      containers:
+        - name: vote
+          ...
+          command: ["/bin/sh"]
+          args:
+            - "-c"
+            - "sleep 300"
+# ADD THE SECTION BELOW:
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            periodSeconds: 5
+            initialDelaySeconds: 10
+```
+* Save the yaml file and apply the deployment
 
 ```bash
-kubectl apply -f manifests/deployments/vote-deployment.yaml -n voting
+kubectl apply -f ~/Orchestration-Project/K8s-app-deploy/Deployments/voting-app1-deployment.yaml
 ```
+<br>
 
 ### Observe Probe Behavior
 
-**Simulate a readiness failure** (misconfigure the path temporarily):
-```yaml
-readinessProbe:
-  httpGet:
-    path: /healthz   # This path doesn't exist
-    port: 80
-```
-
+**Rerun the curl command to see where the request is being sent.**
 ```bash
-kubectl apply -f manifests/deployments/vote-deployment.yaml -n voting
-kubectl get pods -n voting   # Pod stays Running but READY shows 0/1
-kubectl describe pod <vote-pod> -n voting   # Check Events section
+# Only rerun if the curl pod has terminated or if you want to delete it and recreate it
+kubectl run curl --image=curlimages/curl -it -- sh
+
+# Exit out of the shell after it is created
+exit
+
+# Run the curl command
+for i in {1..500}; do
+kubectl exec curl -it -- sh -c 'test=`wget -qO- -T 2  http://<EXTERNAL-IP>:8080 2>&1 | grep -E "container ID"` && echo "$test OK" || echo "Failed"'
+done
+
 ```
 
-The pod is running but removed from the Service endpoints — no traffic reaches it.
+The pod is running but removed from the Service endpoints — no traffic reaches it.  Your output should now look like this:
+```          
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          Processed by container ID vote2-fd6d6975f-5hmvc OK
+          
+```
+Investigate the pod by doing a `kubectl describe pod <pod-name>` and observe the events for notice of the readiness probe failure.
+```bash
+kubectl describe pod <pod-name>
 
-Restore the correct path and reapply to resolve.
+```
+**Event Log:**
+```
+ Warning  Unhealthy  8s (x25 over 2m8s)  kubelet            spec.containers{vote}: Readiness probe failed: Get "http://10.64.0.15:80/": dial tcp 10.64.0.15:80: connect: connection refused
 
-> **Key distinction to document:**
-> - Liveness failure → pod is killed and restarted
-> - Readiness failure → pod stays running but receives zero traffic
+```
+
 
 ---
 <br>
