@@ -532,10 +532,10 @@ kubectl delete pod <results-pod-name>
 
 **Concept:** Kubernetes doesn't know if your application is actually healthy just because the process is running. Probes let you define what "healthy" means. Readiness probes control whether a pod receives traffic. Liveness probes restart a broken pod. 
 
-In the following example, we will first create 2 voting app deployment yaml files and demonstrate what happens when a pod is not ready to receive traffic. Then we will add the readiness probe to the pod that is failing to receive traffic. This will show how the readiness probe will prevent traffic to the failing or delayed pod and indicate a warning that the readiness check failed.
+In the following example, we will demonstrate the Readiness Probe only.  We will first create 2 voting app deployment yaml files and demonstrate what happens when a pod is not ready to receive traffic. Then we will add the readiness probe to the pod that is failing to receive traffic. This will show how the readiness probe will prevent traffic to the failing or delayed pod and indicate a warning that the readiness check failed.
 <br>
 
-### Create 2 voting app yaml files
+### Create two voting app yaml files
 
 * Copy voting-app-deployment.yaml to voting-app2-deployment.yaml
 * Rename voiting-app-deployment.yaml to voting-app1-deployment.yaml
@@ -582,10 +582,11 @@ metadata:
 
 ### Execute test by creating deployment
 
-* This step will presume the necessary components are already deployed.
+* Executing this step will require that these necessary dependencies are met.
    * Configmap for Redis Hostname
    * Secret for PostgreSQL Credentials
    * PVC for PostgreSQL
+   * LoadBalancer for the vote service
 
 
 * Create a persistent curl shell to issue the curl command to the voting app to see where the request is being sent.
