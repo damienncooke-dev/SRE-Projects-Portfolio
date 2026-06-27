@@ -872,10 +872,11 @@ kubectl describe pod <pod-name> -n voting      # Check Events and Last State
 If you try to create a database deployment using a persistent volume claim (PVC) that has not been created yet, 
 the deployment will succeed and the mountpath will be created. Any subsequent attempts after this initial success 
 will fail with CrashLoopBackOff.
+```
 
 <img width="843" height="196" alt="image" src="https://github.com/user-attachments/assets/0e3723e9-eec6-4806-b07e-20e72b618672" />
 
-[paste crash loop image]
+```
 
 -------------------------------------------------
 [ CHECK EVENTS AND LAST STATE ]
@@ -884,7 +885,7 @@ will fail with CrashLoopBackOff.
 Events:
   ...
 Warning  BackOff                 2s (x6 over 2m23s)   kubelet                  spec.containers{postgres}:
-      Back-off restarting failed container postgres in pod db-6447848995-t4bls_voting(24ef790c-cfb0-441c-9d9a-45392433b768)
+   Back-off restarting failed container postgres in pod db-6447848995-t4bls_voting(24ef790c-cfb0-441c-9d9a-45392433b768)
 
 -------------------------------------------------
 [ CHECK POD LOGS ]
