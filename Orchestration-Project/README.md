@@ -874,43 +874,60 @@ the deployment will succeed and the mountpath will be created. Any subsequent at
 will fail with CrashLoopBackOff.
 ```
 
-<img width="843" height="196" alt="image" src="https://github.com/user-attachments/assets/0e3723e9-eec6-4806-b07e-20e72b618672" />
+<img width="633" height="151" alt="image" src="https://github.com/user-attachments/assets/0e3723e9-eec6-4806-b07e-20e72b618672" />
 
-```
+
 
 -------------------------------------------------
 [ CHECK EVENTS AND LAST STATE ]
+
+
+```bash
 % kubectl describe pod <pod-name>
+```
+
+```
 
 Events:
   ...
 Warning  BackOff                 2s (x6 over 2m23s)   kubelet                  spec.containers{postgres}:
    Back-off restarting failed container postgres in pod db-6447848995-t4bls_voting(24ef790c-cfb0-441c-9d9a-45392433b768)
+```
 
 -------------------------------------------------
 [ CHECK POD LOGS ]
-% kubectl logs <pod-name>
 
+```bash
+% kubectl logs <pod-name>
+```
+
+```
 initdb: error: directory "/var/lib/postgresql/data" exists but is not empty
 initdb: detail: It contains a lost+found directory, perhaps due to it being a mount point.
 initdb: hint: Using a mount point directly as the data directory is not recommended.
+```
 
 -------------------------------------------------
 [ EXPLANATION & RESOLUTION ]
 
+```
 You won't be able to initialize a new database target directory to save persistent data if that folder is not empty.
 This is a requiremnt meant to prevent accidental data overwrite. The path initially used is also the mount path
-for the volume. Typically, the lost+found folder is created in the root path of the volume. So using this root path as
-the mount path is not recommended. The fix is to add a subpath to the root path, ensuring only database data is
-written to that location.
+for the volume. Typically, the lost+found folder is created in the root path of the volume. So using this root
+path asthe mount path is not recommended. The fix is to add a subpath to the root path, ensuring only database
+data iswritten to that location.
+```
 
+```bash
 % df -h
+```
+
+```
 Filesystem                Size      Used Available Use% Mounted on
 overlay                  25.4G      8.9G     16.5G  35% /
 tmpfs                    64.0M         0     64.0M   0% /dev
 ...
 /dev/sdb                973.4M     28.0K    957.4M   0% /var/lib/postgresql   <---root mount path
-
 
 ```
 #### ImagePullBackOff
