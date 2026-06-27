@@ -874,7 +874,7 @@ the deployment will succeed and the mountpath will be created. Any subsequent at
 will fail with CrashLoopBackOff.
 ```
 
-   <img width="455" height="127" alt="image" src="https://github.com/user-attachments/assets/0e3723e9-eec6-4806-b07e-20e72b618672" />
+   <img width="555" height="137" alt="image" src="https://github.com/user-attachments/assets/0e3723e9-eec6-4806-b07e-20e72b618672" />
 
 
 
@@ -914,10 +914,10 @@ initdb: hint: Using a mount point directly as the data directory is not recommen
 You won't be able to initialize a new database target directory to save persistent data if that folder is not empty.
 This is a requiremnt meant to prevent accidental data overwrite. The path initially used in this case is also
 the mount path for the volume. Typically, the lost+found folder is created in the root path of the volume.
-So using this root path as the mount path is not recommended. The fix is to add a subpath to the root path,
-in the db deployment yaml see ensuring only database data is created and written to that location.
+So using this root path as the mount path is not recommended. The fix is to add a subpath to the root path
+in the db deployment yaml ensuring only database data is created and written to that location.
 ```
-See [Persistent Storage for PostgreSQL](#8-persistent-storage-for-postgresql) for adding subpath to db deployment
+> See [Persistent Storage for PostgreSQL](#8-persistent-storage-for-postgresql) for adding subpath to db deployment
 
 <br>
 
