@@ -912,24 +912,15 @@ initdb: hint: Using a mount point directly as the data directory is not recommen
 
 ```
 You won't be able to initialize a new database target directory to save persistent data if that folder is not empty.
-This is a requiremnt meant to prevent accidental data overwrite. The path initially used is also the mount path
-for the volume. Typically, the lost+found folder is created in the root path of the volume. So using this root
-path asthe mount path is not recommended. The fix is to add a subpath to the root path, ensuring only database
-data iswritten to that location.
+This is a requiremnt meant to prevent accidental data overwrite. The path initially used in this case is also
+the mount path for the volume. Typically, the lost+found folder is created in the root path of the volume.
+So using this root path as the mount path is not recommended. The fix is to add a subpath to the root path,
+in the db deployment yaml see ensuring only database data is created and written to that location.
 ```
+See [Persistent Storage for PostgreSQL](#8-persistent-storage-for-postgresql) for adding subpath to db deployment
 
-```bash
-% df -h
-```
+<br>
 
-```
-Filesystem                Size      Used Available Use% Mounted on
-overlay                  25.4G      8.9G     16.5G  35% /
-tmpfs                    64.0M         0     64.0M   0% /dev
-...
-/dev/sdb                973.4M     28.0K    957.4M   0% /var/lib/postgresql   <---root mount path
-
-```
 #### ImagePullBackOff
 Kubernetes can't pull the container image.
 
