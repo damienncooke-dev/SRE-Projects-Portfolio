@@ -874,7 +874,7 @@ the deployment will succeed and the mountpath will be created. Any subsequent at
 will fail with CrashLoopBackOff.
 ```
 
-<img width="633" height="151" alt="image" src="https://github.com/user-attachments/assets/0e3723e9-eec6-4806-b07e-20e72b618672" />
+   <img width="455" height="127" alt="image" src="https://github.com/user-attachments/assets/0e3723e9-eec6-4806-b07e-20e72b618672" />
 
 
 
