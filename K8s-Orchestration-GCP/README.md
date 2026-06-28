@@ -217,7 +217,7 @@ kubectl get namespaces
 
 ### Apply All Deployments
 ```bash
-kubectl apply -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/manifests/Deployments/ 
+kubectl apply -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/manifests/deployments/ 
 ```
 
 ### Watch the Pods Come Up
@@ -317,13 +317,13 @@ There are two types in use here:
 
 
 ```bash
-vi ~/K8s-Orchestration-GCP/K8s-app-deploy-test/manifests/Services/vote-service.yaml   # Change the type to LoadBalancer
-vi ~/K8s-Orchestration-GCP/K8s-app-deploy-test/manifests/Services/result-service.yaml  # Change the type to LoadBalancer
+vi ~/K8s-Orchestration-GCP/K8s-app-deploy-test/manifests/services/vote-service.yaml   # Change the type to LoadBalancer
+vi ~/K8s-Orchestration-GCP/K8s-app-deploy-test/manifests/services/result-service.yaml  # Change the type to LoadBalancer
 ```
 
 ### Apply Services
 ```bash
-kubectl apply -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/manifests/Services/ 
+kubectl apply -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/manifests/services/ 
 ```
 
 ### Verify
@@ -358,7 +358,7 @@ kubectl create configmap app-config \
   --from-literal=REDIS_HOST=redis \
   -n voting
 ```
-...update the deployment [`~/Orchestration-Project/K8s-app-deploy/Deployments/redis-app-deployment.yaml`] to reference the configmap
+...update the deployment [`~/Orchestration-Project/K8s-app-deploy/deployments/redis-app-deployment.yaml`] to reference the configmap
 ```yaml
 containers:
   - name: 
@@ -370,7 +370,7 @@ containers:
 ...apply the changes for the deployment to pick up the environment variable...
 
 ```bash
-kubectl apply -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/manifests/Deployments/redis-app-deployment.yaml 
+kubectl apply -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/manifests/deployments/redis-app-deployment.yaml 
 
 ```
 ...check pod status...
@@ -400,7 +400,7 @@ env | grep REDIS_HOST
 A secret YAML file is already created for this project.   The data inside the file is base64-encoded.  Once the secret is created, the voting app should begin to work.
 
 ```yaml
-# ~/K8s-Orchestration-GCP/K8s-app-deploy-test/manifests/Secrets/db-secrets.yaml
+# ~/K8s-Orchestration-GCP/K8s-app-deploy-test/manifests/secrets/db-secrets.yaml
 apiVersion: v1
 kind: Secret
 metadata:
@@ -419,7 +419,7 @@ data:
 
 ### Create 
 ```bash
-kubectl create -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/manifests/Secrets/db-secrets.yaml
+kubectl create -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/manifests/secrets/db-secrets.yaml
 
 ```
 
@@ -598,7 +598,7 @@ exit
 ```
 * Create a deployment and wait for all pod STATUS to say "Running" and  READY to say "1/1"
 ```bash
-kubectl create -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/manifests/Deployments/
+kubectl create -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/manifests/deployments/
 
 # Monitor the deployment
 kubectl get pods
@@ -693,7 +693,7 @@ spec:
 * Save the yaml file and apply the deployment
 
 ```bash
-kubectl apply -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/manifests/Deployments/voting-app1-deployment.yaml
+kubectl apply -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/manifests/deployments/voting-app1-deployment.yaml
 ```
 <br>
 
