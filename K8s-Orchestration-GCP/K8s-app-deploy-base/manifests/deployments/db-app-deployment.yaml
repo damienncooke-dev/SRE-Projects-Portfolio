@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+  labels:
+    app: db
+  namespace: voting
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      name: db
+      labels:
+        app: db
+    spec:
+      volumes:
+        - name: postgress-storage
+          persistentVolumeClaim:
+            claimName: db-pvc
+      containers:
+        - name: postgres
+          image: postgres:15-alpine
+          ports:
+            - name: postgres
+              containerPort: 5432
+          envFrom:
+            - secretRef:
+               name: db-secrets
+          env:
+            - name: DBDATA
+              value: /var/lib/postgresssql/data/dbdata
+          volumeMounts:
+            - name: postgress-storage
+              mountPath: /var/lib/postgresql/data
+              subPath: dbdata

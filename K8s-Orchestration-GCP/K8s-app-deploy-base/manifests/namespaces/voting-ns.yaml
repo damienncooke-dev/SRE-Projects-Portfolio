@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: "2026-06-28T20:00:08Z"
+  labels:
+    kubernetes.io/metadata.name: voting
+  name: voting
+  resourceVersion: "1782676808484815019"
+  uid: 020fdad5-d280-4133-934c-4d19101b36cb
+spec:
+  finalizers:
+  - kubernetes
+status:
+  phase: Active

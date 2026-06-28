@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2026-06-28T20:03:27Z"
+  name: app-config
+  namespace: voting
+  resourceVersion: "1782677007596399015"
+  uid: cc061475-e6d2-416b-b6d1-d304c69f5326
+data:
+  REDIS_HOST: redis
