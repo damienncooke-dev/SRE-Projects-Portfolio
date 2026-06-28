@@ -217,7 +217,7 @@ kubectl get namespaces
 
 ### Apply All Deployments
 ```bash
-kubectl apply -f ~/K8s-Orchestration-GCP/K8s-app-deploy/Deployments/ 
+kubectl apply -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/Deployments/ 
 ```
 
 ### Watch the Pods Come Up
@@ -317,13 +317,13 @@ There are two types in use here:
 
 
 ```bash
-vi ~/K8s-Orchestration-GCP/K8s-app-deploy/Services/vote-service.yaml   # Change the type to LoadBalancer
-vi ~/K8s-Orchestration-GCP/K8s-app-deploy/Services/result-service.yaml  # Change the type to LoadBalancer
+vi ~/K8s-Orchestration-GCP/K8s-app-deploy-test/Services/vote-service.yaml   # Change the type to LoadBalancer
+vi ~/K8s-Orchestration-GCP/K8s-app-deploy-test/Services/result-service.yaml  # Change the type to LoadBalancer
 ```
 
 ### Apply Services
 ```bash
-kubectl apply -f ~/K8s-Orchestration-GCP/K8s-app-deploy/Services/ 
+kubectl apply -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/Services/ 
 ```
 
 ### Verify
@@ -370,7 +370,7 @@ containers:
 ...apply the changes for the deployment to pick up the environment variable...
 
 ```bash
-kubectl apply -f ~/K8s-Orchestration-GCP/K8s-app-deploy/Deployments/redis-app-deployment.yaml 
+kubectl apply -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/Deployments/redis-app-deployment.yaml 
 
 ```
 ...check pod status...
@@ -400,7 +400,7 @@ env | grep REDIS_HOST
 A secret YAML file is already created for this project.   The data inside the file is base64-encoded.  Once the secret is created, the voting app should begin to work.
 
 ```yaml
-# ~/K8s-Orchestration-GCP/K8s-app-deploy/Secrets/db-secrets.yaml
+# ~/K8s-Orchestration-GCP/K8s-app-deploy-test/Secrets/db-secrets.yaml
 apiVersion: v1
 kind: Secret
 metadata:
@@ -419,7 +419,7 @@ data:
 
 ### Create 
 ```bash
-kubectl create -f ~/K8s-Orchestration-GCP/K8s-app-deploy/Secrets/db-secrets.yaml
+kubectl create -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/Secrets/db-secrets.yaml
 
 ```
 
@@ -467,7 +467,7 @@ spec:
 ```
 
 ```bash
-kubectl apply -f ~/K8s-Orchestration-GCP/K8s-app-deploy/pvc/db-pvc.yaml 
+kubectl apply -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/pvc/db-pvc.yaml 
 kubectl get pvc
 ```
 
@@ -598,7 +598,7 @@ exit
 ```
 * Create a deployment and wait for all pod STATUS to say "Running" and  READY to say "1/1"
 ```bash
-kubectl create -f ~/K8s-Orchestration-GCP/K8s-app-deploy/Deployments/
+kubectl create -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/Deployments/
 
 # Monitor the deployment
 kubectl get pods
@@ -693,7 +693,7 @@ spec:
 * Save the yaml file and apply the deployment
 
 ```bash
-kubectl apply -f ~/K8s-Orchestration-GCP/K8s-app-deploy/Deployments/voting-app1-deployment.yaml
+kubectl apply -f ~/K8s-Orchestration-GCP/K8s-app-deploy-test/Deployments/voting-app1-deployment.yaml
 ```
 <br>
 
